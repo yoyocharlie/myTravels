@@ -1,10 +1,10 @@
 import React from 'react';
 
 const EmptyCard = (props) => {
-
+  const openModal = props.openModal;
 
   return (
-    <div onClick={props.openModal} className="mb-5 min-w-max hover:shadow-xl hover:cursor-pointer transform transition duration-500 hover:scale-105">  
+    <div onClick={openModal} className="mb-5 min-w-max hover:shadow-xl hover:cursor-pointer transform transition duration-500 hover:scale-105">  
       <div className="max-w-sm rounded bg-white overflow-hidden shadow-lg">
         <div className="w-full bg-gray-200 border text-center">
             <div className="text-2xl bg-pinkishRed text-white rounded-full m-16 p-5" data-modal-toggle="authentication-modal">
