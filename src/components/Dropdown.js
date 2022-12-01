@@ -6,9 +6,13 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Dropdown() {
+export default function Dropdown(props) {
+
+  const userStatus = props.userStatus;
+
+
   return (
-    <Menu as="div" className="md:hidden relative inline-block text-left">
+    <Menu as="div" className="md:hidden relative inline-block text-left mr-5">
       <div>
         <Menu.Button className="ml-6 inline-flex w-full justify-center rounded-md bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -29,7 +33,7 @@ export default function Dropdown() {
       >
         <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="py-1">
-            <Menu.Item>
+            {userStatus === false && <Menu.Item>
               {({ active }) => (
                 <Link
                   to='/'
@@ -41,8 +45,8 @@ export default function Dropdown() {
                   Home
                 </Link>
               )}
-            </Menu.Item>
-            <Menu.Item>
+            </Menu.Item>}
+            {userStatus === false && <Menu.Item>
               {({ active }) => (
                 <Link
                   to='/login'
@@ -54,8 +58,22 @@ export default function Dropdown() {
                   Login
                 </Link>
               )}
-            </Menu.Item>
-            <Menu.Item>
+            </Menu.Item>}
+            {userStatus && <Menu.Item>
+              {({ active }) => (
+                <Link
+                  to='/'
+                  onClick={props.logUserOut}
+                  className={classNames(
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'block px-4 py-2 text-sm'
+                  )}
+                >
+                  Logout
+                </Link>
+              )}
+            </Menu.Item>}
+            {userStatus === false && <Menu.Item>
               {({ active }) => (
                 <Link
                   to='signup'
@@ -67,7 +85,7 @@ export default function Dropdown() {
                   Sign Up
                 </Link>
               )}
-            </Menu.Item>
+            </Menu.Item>}
           </div>
         </Menu.Items>
       </Transition>
