@@ -10,12 +10,6 @@ const Profile = (props) => {
 
   const toggleModal = () => {
     props.setShowModal((modal) => !modal)
-    // setInput({
-    //     image: '',
-    //     location: '',
-    //     date: '',
-    //     description: ''
-    // })
 }
 
   const card = cards.map((card) => {
