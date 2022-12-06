@@ -1,45 +1,69 @@
 import Card from "./Card";
 import EmptyCard from "./EmptyCard";
 import Modal from "./Modal";
+import UpdateModal from "./UpdateModal";
 import { useState } from "react";
 
 const Profile = (props) => {
   const [showModal, setShowModal] = useState(false);
-
-  const cards = props.userCards
-
+  const [updateModal, setUpdateModal] = useState(false);
+  const [activeEditId, setActiveEditId] = useState({});
+  const [activeEditInputs, setActiveEditInputs] = useState({});
+  const cards = props.userCards;
+  const postTrip = props.postTrip;
+  const updateTrip = props.updateTrip;
+  const deleteTrip = props.deleteTrip;
   const toggleModal = () => {
-    props.setShowModal((modal) => !modal)
-}
+    setShowModal((modal) => !modal);
+  }
+  const toggleUpdateModal = (id, image, date, description, location) => {
+    return () => {
+      setActiveEditInputs({
+        ...activeEditInputs,
+        image: image,
+        date: date,
+        description: description,
+        location: location
+      });
+      setActiveEditId(id)
+      setUpdateModal((modal) => !modal)
+    };
+  }
+  const closeUpdateModal = () => {
+    setUpdateModal(modal => !modal);
+  }
 
-  const card = cards.map((card) => {
+  const cardComponents = cards.map((card) => {
     return (
       <Card
         key={card.id}
+        id={card.id}
         image={card.image}
         date={card.date}
         description={card.description}
         location={card.location}
+        deleteTrip={deleteTrip}
+        toggleUpdateModal={toggleUpdateModal(
+          card.id, 
+          card.image, 
+          card.date, 
+          card.description, 
+          card.location
+        )}
       />
     )
-  })
+  });
 
-  const addTrip = (e) => {
-    e.preventDefault();
-  }
+  
 
   return (
     <div className="flex justify-center">
-        <div className="w-3/4 grid md:grid-cols-3 gap-4 md:gap-8 justify-items-center">
-            {card}
-            <div>
-              <EmptyCard openModal={showModal} />
-              {showModal && <Modal toggleModal={toggleModal} setShowModal={setShowModal} addTrip={addTrip} />}
-            </div>
-            {/* <button onClick={createCard} className="rounded-full xs:mt-5 bg-pinkishRed shadow-lg p-5 w-10 h-10 flex justify-center items-center self-center">
-              <span className="text-white text-xl mb-1">+</span>
-            </button> */}
+        <div className="grid md:grid-cols-3 gap-4 md:gap-8 justify-items-center">
+            {cardComponents}
+            <EmptyCard openModal={toggleModal}/>
         </div>
+        {showModal && <Modal toggleModal={toggleModal} postTrip={postTrip} />}
+        {updateModal && <UpdateModal closeUpdateModal={closeUpdateModal} toggleUpdateModal={toggleUpdateModal} updateTrip={updateTrip} activeEditId={activeEditId} activeEditInputs={activeEditInputs} />}
     </div>
   )
 }

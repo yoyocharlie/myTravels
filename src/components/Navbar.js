@@ -2,12 +2,15 @@ import Dropdown from './Dropdown';
 import { Link } from 'react-router-dom';
 
 const Navbar = (props) => {
+  const setUserId = props.setUserId;
+  // const refreshCards = props.refreshCards;
 
   const logUserOut = function() {
     props.signOut(props.auth);
+    setUserId('');
   }
 
-  const userStatus = props.userStatus
+  const userStatus = props.userStatus;
 
   return (
     <div>

@@ -1,34 +1,9 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
 
 export default function Signup(props) {
-  const [input, setInput] = useState({
-    email: '',
-    confirmEmail: '',
-    password: ''
-  });
-
-  const handleInput = function(e) {
-    const value = e.target.value;
-
-    setInput({
-      ...input,
-      [e.target.name]: value
-    });
-  }
-  
-  const creatUserAccount = function(e) {
-    e.preventDefault();
-
-    props.createUser(props.auth, input.email, input.password)
-    .then(cred => {
-      setInput({
-        email: '',
-        confirmEmail: '',
-        password: ''
-      })
-    })
-  }
+  const signupInput = props.signupInput;
+  const handleSignup = props.handleSignup;
+  const creatUserAccount = props.creatUserAccount;
 
   return (
     <>
@@ -61,8 +36,8 @@ export default function Signup(props) {
                   required
                   className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                   placeholder="Email address"
-                  value={input.email}
-                  onChange={handleInput}
+                  value={signupInput.email}
+                  onChange={handleSignup}
                 />
               </div>
               <div>
@@ -77,8 +52,8 @@ export default function Signup(props) {
                   required
                   className="relative block w-full appearance-none rounded-none border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                   placeholder="Confirm Email"
-                  value={input.confirmEmail}
-                  onChange={handleInput}
+                  value={signupInput.confirmEmail}
+                  onChange={handleSignup}
                 />
               </div>
               <div>
@@ -93,8 +68,8 @@ export default function Signup(props) {
                   required
                   className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                   placeholder="Password"
-                  value={input.password}
-                  onChange={handleInput}
+                  value={signupInput.password}
+                  onChange={handleSignup}
                 />
               </div>
             </div>

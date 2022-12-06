@@ -575,6 +575,10 @@ video {
   pointer-events: none;
 }
 
+.fixed {
+  position: fixed;
+}
+
 .absolute {
   position: absolute;
 }
@@ -590,6 +594,14 @@ video {
 
 .right-0 {
   right: 0px;
+}
+
+.left-0 {
+  left: 0px;
+}
+
+.top-0 {
+  top: 0px;
 }
 
 .top-1\/2 {
@@ -610,10 +622,6 @@ video {
 
 .right-2 {
   right: 0.5rem;
-}
-
-.left-0 {
-  left: 0px;
 }
 
 .z-10 {
@@ -641,6 +649,10 @@ video {
   margin-bottom: 0.5rem;
 }
 
+.mr-6 {
+  margin-right: 1.5rem;
+}
+
 .mr-5 {
   margin-right: 1.25rem;
 }
@@ -653,16 +665,12 @@ video {
   margin-top: 0.5rem;
 }
 
-.mt-14 {
-  margin-top: 3.5rem;
+.mt-6 {
+  margin-top: 1.5rem;
 }
 
 .mb-20 {
   margin-bottom: 5rem;
-}
-
-.mt-6 {
-  margin-top: 1.5rem;
 }
 
 .mt-8 {
@@ -675,10 +683,6 @@ video {
 
 .mb-4 {
   margin-bottom: 1rem;
-}
-
-.mb-1 {
-  margin-bottom: 0.25rem;
 }
 
 .block {
@@ -709,20 +713,16 @@ video {
   height: 1.5rem;
 }
 
+.h-screen {
+  height: 100vh;
+}
+
 .h-full {
   height: 100%;
 }
 
 .h-5 {
   height: 1.25rem;
-}
-
-.h-10 {
-  height: 2.5rem;
-}
-
-.h-screen {
-  height: 100vh;
 }
 
 .max-h-20 {
@@ -745,25 +745,16 @@ video {
   width: 14rem;
 }
 
-.w-5 {
-  width: 1.25rem;
-}
-
-.w-3\/4 {
-  width: 75%;
-}
-
-.w-10 {
-  width: 2.5rem;
-}
-
 .w-screen {
   width: 100vw;
 }
 
-.min-w-max {
-  min-width: -webkit-max-content;
-  min-width: max-content;
+.w-5 {
+  width: 1.25rem;
+}
+
+.min-w-full {
+  min-width: 100%;
 }
 
 .max-w-sm {
@@ -814,6 +805,10 @@ video {
   resize: none;
 }
 
+.resize {
+  resize: both;
+}
+
 .appearance-none {
   -webkit-appearance: none;
           appearance: none;
@@ -861,10 +856,6 @@ video {
   --tw-space-x-reverse: 0;
   margin-right: calc(3rem * var(--tw-space-x-reverse));
   margin-left: calc(3rem * calc(1 - var(--tw-space-x-reverse)));
-}
-
-.self-center {
-  align-self: center;
 }
 
 .overflow-hidden {
@@ -934,6 +925,11 @@ video {
   background-color: rgb(255 88 93 / var(--tw-bg-opacity));
 }
 
+.bg-black {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
 .bg-transparent {
   background-color: transparent;
 }
@@ -941,11 +937,6 @@ video {
 .bg-gray-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
-}
-
-.bg-black {
-  --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
 }
 
 .p-5 {
@@ -1030,10 +1021,6 @@ video {
   padding-bottom: 0.625rem;
 }
 
-.pb-20 {
-  padding-bottom: 5rem;
-}
-
 .pl-3 {
   padding-left: 0.75rem;
 }
@@ -1058,11 +1045,6 @@ video {
   font-family: 'Rubik Glitch', cursive;
 }
 
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-}
-
 .text-base {
   font-size: 1rem;
   line-height: 1.5rem;
@@ -1078,14 +1060,14 @@ video {
   line-height: 2rem;
 }
 
-.text-4xl {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
-}
-
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
 .text-lg {
@@ -1263,7 +1245,7 @@ video {
 }
 
 body {
-  background: rgb(211, 191, 168);
+  background-image: url('../images/valley.png');
 }
 
 .hover\:scale-105:hover {
@@ -1470,16 +1452,17 @@ body {
 }
 
 @media (min-width: 100px) {
-  .xs\:mt-5 {
-    margin-top: 1.25rem;
-  }
-
   .xs\:min-w-full {
     min-width: 100%;
   }
 
   .xs\:p-2 {
     padding: 0.5rem;
+  }
+
+  .xs\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 
   .xs\:text-4xl {
@@ -1503,6 +1486,16 @@ body {
     padding-right: 1.5rem;
   }
 
+  .sm\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
+  .sm\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
   .sm\:text-5xl {
     font-size: 3rem;
     line-height: 1;
@@ -1515,6 +1508,10 @@ body {
 }
 
 @media (min-width: 768px) {
+  .md\:mt-14 {
+    margin-top: 3.5rem;
+  }
+
   .md\:flex {
     display: flex;
   }
@@ -1544,9 +1541,19 @@ body {
     padding-right: 2rem;
   }
 
+  .md\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
   .md\:text-5xl {
     font-size: 3rem;
     line-height: 1;
+  }
+
+  .md\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 
   .md\:leading-loose {
@@ -1558,5 +1565,10 @@ body {
   .lg\:px-8 {
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+
+  .lg\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 }
