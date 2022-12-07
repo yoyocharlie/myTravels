@@ -4,7 +4,7 @@ const Modal = (props) => {
     const onSubmit = (e) => {
         e.preventDefault();
         // const image = e.target.elements.image.files[0];
-        const image = 'https://i0.wp.com/travelwithmonsters.com/wp-content/uploads/2019/06/animals-red-eye-tree-frog.jpg?fit=1500%2C1124&ssl=1&resize=848%2C500';
+        const image = 'https://images.pexels.com/photos/2325446/pexels-photo-2325446.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
         const location = e.target.elements.location.value;
         const date = e.target.elements.date.value;
         const description = e.target.elements.description.value;

@@ -42,8 +42,8 @@ function App() {
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       setUserStatus(!!user);
-    })
-  }, [userId, auth])
+    });
+  }, [userId, auth]);
 
 
   
