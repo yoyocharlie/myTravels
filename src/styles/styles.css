@@ -628,8 +628,24 @@ video {
   z-index: 10;
 }
 
+.z-50 {
+  z-index: 50;
+}
+
 .m-16 {
   margin: 4rem;
+}
+
+.m-14 {
+  margin: 3.5rem;
+}
+
+.m-4 {
+  margin: 1rem;
+}
+
+.m-auto {
+  margin: auto;
 }
 
 .mx-auto {
@@ -683,6 +699,22 @@ video {
 
 .mb-4 {
   margin-bottom: 1rem;
+}
+
+.mt-20 {
+  margin-top: 5rem;
+}
+
+.mt-24 {
+  margin-top: 6rem;
+}
+
+.mt-28 {
+  margin-top: 7rem;
+}
+
+.mr-auto {
+  margin-right: auto;
 }
 
 .block {
@@ -753,6 +785,14 @@ video {
   width: 1.25rem;
 }
 
+.w-12 {
+  width: 3rem;
+}
+
+.w-3\/4 {
+  width: 75%;
+}
+
 .min-w-full {
   min-width: 100%;
 }
@@ -818,6 +858,10 @@ video {
   align-items: center;
 }
 
+.justify-end {
+  justify-content: flex-end;
+}
+
 .justify-center {
   justify-content: center;
 }
@@ -860,6 +904,19 @@ video {
 
 .overflow-hidden {
   overflow: hidden;
+}
+
+.break-normal {
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.break-words {
+  overflow-wrap: break-word;
+}
+
+.break-all {
+  word-break: break-all;
 }
 
 .rounded {
@@ -939,6 +996,21 @@ video {
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
 }
 
+.bg-orange-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(251 146 60 / var(--tw-bg-opacity));
+}
+
+.bg-gray-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(209 213 219 / var(--tw-bg-opacity));
+}
+
+.bg-orange-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 215 170 / var(--tw-bg-opacity));
+}
+
 .p-5 {
   padding: 1.25rem;
 }
@@ -969,6 +1041,10 @@ video {
 
 .p-2 {
   padding: 0.5rem;
+}
+
+.p-6 {
+  padding: 1.5rem;
 }
 
 .px-6 {
@@ -1075,6 +1151,16 @@ video {
   line-height: 1.75rem;
 }
 
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
+.text-6xl {
+  font-size: 3.75rem;
+  line-height: 1;
+}
+
 .font-bold {
   font-weight: 700;
 }
@@ -1138,6 +1224,11 @@ video {
 .text-darkGray {
   --tw-text-opacity: 1;
   color: rgb(72 72 72 / var(--tw-text-opacity));
+}
+
+.text-gray-800 {
+  --tw-text-opacity: 1;
+  color: rgb(31 41 55 / var(--tw-text-opacity));
 }
 
 .placeholder-gray-500::-webkit-input-placeholder {
@@ -1293,6 +1384,11 @@ body {
   background-color: rgb(72 72 72 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-gray-100:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+
 .hover\:text-indigo-500:hover {
   --tw-text-opacity: 1;
   color: rgb(99 102 241 / var(--tw-text-opacity));
@@ -1311,6 +1407,10 @@ body {
 .hover\:text-white:hover {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.hover\:underline:hover {
+  text-decoration-line: underline;
 }
 
 .hover\:shadow-xl:hover {
@@ -1452,6 +1552,10 @@ body {
 }
 
 @media (min-width: 100px) {
+  .xs\:m-4 {
+    margin: 1rem;
+  }
+
   .xs\:min-w-full {
     min-width: 100%;
   }
@@ -1508,6 +1612,14 @@ body {
 }
 
 @media (min-width: 768px) {
+  .md\:m-0 {
+    margin: 0px;
+  }
+
+  .md\:m-4 {
+    margin: 1rem;
+  }
+
   .md\:mt-14 {
     margin-top: 3.5rem;
   }

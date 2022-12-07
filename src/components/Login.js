@@ -4,7 +4,7 @@ export default function Login(props) {
 
   return (
     <>
-      <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="mt-28 flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8 p-10 bg-white rounded-lg shadow-lg">
           <div>
             <h1 className="xs:text-4xl sm:text-5xl text-center text-pinkishRed p-1 font-rubik-glitch">myTravels</h1>

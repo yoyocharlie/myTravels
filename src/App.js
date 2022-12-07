@@ -37,10 +37,15 @@ function App() {
     confirmEmail: '',
     password: ''
   });
-
   const navigate = useNavigate();
 
-  // const userRef = doc(db, "Users", userId, "Trips");
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      setUserStatus(!!user);
+    })
+  }, [userId, auth])
+
+
   
   const handleInput = function(e) {
     const value = e.target.value;
@@ -67,25 +72,27 @@ function App() {
         confirmEmail: '',
         password: ''
       });
-      await addDoc(collection(db, "Users", cred.user.uid, "Trips"), {});
+      // await addDoc(collection(db, "Users", cred.user.uid, "Trips"), {});
       setUserId(cred.user.uid);
+      await refreshCards(cred.user.uid);
+      navigate('/');
     } catch(err) {
       console.log(err);
     }
   }
+
   
   const signUserIn = async (e) => {
     e.preventDefault();
     try{
       const user = await signInWithEmailAndPassword(auth, input.email, input.password);
-      setUserStatus(!!user);
       setUserId(user.user.uid);
+      await refreshCards(user.user.uid);
       navigate('/');
       setInput({
         email: '',
         password: ''
       });
-      refreshCards();
     } catch(err) {
       alert('Invalid');
     }
@@ -94,35 +101,33 @@ function App() {
   
   const postTrip = async (date, description, location, image) => {
     await addDoc(collection(db, "Users", userId, "Trips"), { date, description, location, image });
-    refreshCards();
+    refreshCards(userId);
   }
 
   const updateTrip = async (id, date, description, location, image) => {
     await updateDoc(doc(db, "Users", userId, "Trips", id), {date, description, location, image});
-    refreshCards();
+    refreshCards(userId);
   }
 
   const deleteTrip = (id) => {
       return async () => {
       await deleteDoc(doc(db, "Users", userId, "Trips", id));
-      refreshCards();
+      refreshCards(userId);
     }
   };
   
 
-  const refreshCards = async () => {
-      console.log(userId)
+  const refreshCards = async (userId) => {
       const colRef = collection(db, "Users", userId, "Trips");
       const snapshot = await getDocs(colRef);
       const trips = snapshot?.docs?.map(doc => ({ ...doc.data(), id: doc.id }) ) ?? [];
       setUserCards(trips);
   }
-  console.log(userId)
 
 
   return (
     <div className="App">
-      <Navbar auth={auth} setUserId={setUserId} signOut={signOut} userStatus={userStatus} refreshCards={refreshCards} />
+      <Navbar auth={auth} setUserId={setUserId} signOut={signOut} userStatus={userStatus} />
       <Routes>
         <Route path='/' element={userStatus ? <Profile userCards={userCards} postTrip={postTrip} updateTrip={updateTrip} deleteTrip={deleteTrip}/> : <Home />} />
         <Route  path='/login' element={<Login auth={auth} handleInput={handleInput} input={input} signUserIn={signUserIn} />} />

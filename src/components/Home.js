@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const Home = (props) => {
   return (
-    <div className="flex justify-center hero font-roboto">
+    <div className="flex justify-center hero font-roboto mt-28">
         <div className="flex items-center text-center">
             <div className="rounded bg-white shadow-2xl p-10">
                 <div className="rounded xs:p-2 sm:p-10">

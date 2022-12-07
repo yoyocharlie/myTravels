@@ -6,8 +6,8 @@ const EmptyCard = (props) => {
   return (
     <div onClick={openModal} className="min-w-full mb-5">  
       <div className="max-w-sm rounded bg-white overflow-hidden shadow-lg hover:shadow-xl hover:cursor-pointer transform transition duration-500 hover:scale-105">
-        <div className="w-full bg-gray-200 border text-center">
-            <div className="text-2xl bg-pinkishRed text-white rounded-full m-16 p-5" data-modal-toggle="authentication-modal">
+        <div className="w-full bg-orange-200 border text-center">
+            <div className="text-6xl text-white m-16 p-5" data-modal-toggle="authentication-modal">
                 +
             </div>
         </div>

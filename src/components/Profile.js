@@ -57,8 +57,8 @@ const Profile = (props) => {
   
 
   return (
-    <div className="flex justify-center">
-        <div className="grid md:grid-cols-3 gap-4 md:gap-8 justify-items-center">
+    <div className="flex justify-center m-4">
+        <div className="grid md:grid-cols-3 gap-4 md:gap-8 justify-items-center mt-28">
             {cardComponents}
             <EmptyCard openModal={toggleModal}/>
         </div>

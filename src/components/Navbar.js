@@ -3,17 +3,18 @@ import { Link } from 'react-router-dom';
 
 const Navbar = (props) => {
   const setUserId = props.setUserId;
-  // const refreshCards = props.refreshCards;
+  const signOut = props.signOut;
+  const auth = props.auth;
 
-  const logUserOut = function() {
-    props.signOut(props.auth);
-    setUserId('');
+  const logUserOut = async() => {
+      await signOut(auth);
+      setUserId('');
   }
 
   const userStatus = props.userStatus;
 
   return (
-    <div>
+    <div className="fixed w-full z-50 top-0">
       <nav className="relative mb-20 mx-auto shadow-md text-3xl bg-pinkishRed p-3 md:px-8">
           <div className="flex items-center justify-between">
               <div>
