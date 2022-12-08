@@ -6,8 +6,8 @@ import Login from "./components/Login";
 import Navbar from './components/Navbar';
 import Profile from './components/Profile';
 import { initializeApp } from "firebase/app";
-import { getAuth, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, setPersistence, browserSessionPersistence} from "firebase/auth";
-import { getFirestore, collection, getDocs, addDoc, deleteDoc,updateDoc, doc, setDoc } from "firebase/firestore";
+import { getAuth, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { getFirestore, collection, getDocs, addDoc, deleteDoc,updateDoc, doc } from "firebase/firestore";
 
 function App() {
   const firebaseConfig = {
