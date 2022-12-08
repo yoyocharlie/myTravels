@@ -6,9 +6,7 @@ import Login from "./components/Login";
 import Navbar from './components/Navbar';
 import Profile from './components/Profile';
 import { initializeApp } from "firebase/app";
-import { getAuth, signOut, 
-        createUserWithEmailAndPassword, 
-        signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, setPersistence, browserSessionPersistence} from "firebase/auth";
 import { getFirestore, collection, getDocs, addDoc, deleteDoc,updateDoc, doc, setDoc } from "firebase/firestore";
 
 function App() {
@@ -42,9 +40,9 @@ function App() {
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       setUserStatus(!!user);
+      user && refreshCards(user.uid);
     });
   }, [userId, auth]);
-
 
   
   const handleInput = function(e) {
@@ -81,7 +79,6 @@ function App() {
     }
   }
 
-  
   const signUserIn = async (e) => {
     e.preventDefault();
     try{
@@ -94,9 +91,33 @@ function App() {
         password: ''
       });
     } catch(err) {
-      alert('Invalid');
+      console.log(err);
     }
   }
+
+
+  /// START TEST
+
+
+  // const signUserIn = (e) => {
+  //   e.preventDefault();
+  //   setPersistence(auth, browserSessionPersistence)
+  //   .then(async () => {
+  //     const user = await signInWithEmailAndPassword(auth, input.email, input.password);
+  //     setUserId(user.user.uid);
+  //     await setPersistence(auth, browserSessionPersistence);
+  //     await refreshCards(user.user.uid);
+  //     navigate('/');
+  //     setInput({
+  //       email: '',
+  //       password: ''
+  //     });
+  //   })
+  // }
+
+
+  /// END TEST
+
 
   
   const postTrip = async (date, description, location, image) => {
@@ -117,8 +138,8 @@ function App() {
   };
   
 
-  const refreshCards = async (userId) => {
-      const colRef = collection(db, "Users", userId, "Trips");
+  const refreshCards = async (id) => {
+      const colRef = collection(db, "Users", id, "Trips");
       const snapshot = await getDocs(colRef);
       const trips = snapshot?.docs?.map(doc => ({ ...doc.data(), id: doc.id }) ) ?? [];
       setUserCards(trips);

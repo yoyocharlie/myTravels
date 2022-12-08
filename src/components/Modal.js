@@ -12,6 +12,7 @@ const Modal = (props) => {
         props.toggleModal();
     }
 
+
   return (
     <>
         <div className="fixed w-screen h-screen bg-black opacity-40 left-0 top-0"></div>
