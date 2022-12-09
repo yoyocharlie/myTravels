@@ -23,7 +23,7 @@ const Navbar = (props) => {
               <div className="hidden md:flex space-x-12 font-roboto">
                   {userStatus === false && <Link to='/' className="text-lg p-1 text-white hover:text-darkGray hover:bg-white hover:rounded">Home</Link>}
                   {userStatus === false && <Link to='/login' className="text-lg p-1 text-white hover:text-darkGray hover:bg-white hover:rounded">Login</Link>}
-                  {userStatus && <Link to='/' onClick={logUserOut} className="text-lg p-1 text-white hover:text-darkGray hover:bg-white hover:rounded">Logout</Link>}
+                  {userStatus && <Link to='/' onClick={logUserOut} data-testid="logoutButton" className="text-lg p-1 text-white hover:text-darkGray hover:bg-white hover:rounded">Logout</Link>}
                   {userStatus === false && <Link to='/signup' className="text-lg p-1 text-darkGray rounded bg-white hover:bg-darkGray hover:text-white">Sign Up</Link>}
               </div>
               <Dropdown logUserOut={logUserOut} userStatus={userStatus} auth={props.auth} />

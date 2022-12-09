@@ -17,7 +17,7 @@ const Home = (props) => {
 
                         <h4 className="inline-block xs:text-md sm:text-lg md:text-xl text-black mt-6 md:mt-14 mb-5">myTravels | 2022</h4>
                         <h4 className="text-black xs:text-md sm:text-lg md:text-xl mb-20">A simple place to document all of your adventures</h4>
-                        <Link to='/login' className="p-3 rounded text-white bg-pinkishRed hover:bg-red-500 transform transition duration-200 hover:shadow-lg">Get Started</Link>
+                        <Link to='/login' data-testid="getStartedBtn" className="p-3 rounded text-white bg-pinkishRed hover:bg-red-500 transform transition duration-200 hover:shadow-lg">Get Started</Link>
                     </div>
                 </div>
             </div>

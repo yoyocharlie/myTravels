@@ -37,6 +37,7 @@ function App() {
   });
   const navigate = useNavigate();
 
+
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       setUserStatus(!!user);
@@ -64,18 +65,21 @@ function App() {
   const creatUserAccount = async(e) => {
     e.preventDefault();
     try{
+      if(signupInput.email !== signupInput.confirmEmail) {
+        alert('Emails did not match')
+        return;
+      }
       const cred = await createUserWithEmailAndPassword(auth, signupInput.email, signupInput.password);
       setSignupInput({
         email: '',
         confirmEmail: '',
         password: ''
       });
-      // await addDoc(collection(db, "Users", cred.user.uid, "Trips"), {});
       setUserId(cred.user.uid);
       await refreshCards(cred.user.uid);
       navigate('/');
     } catch(err) {
-      console.log(err);
+      alert('Invalid email')
     }
   }
 
@@ -91,33 +95,9 @@ function App() {
         password: ''
       });
     } catch(err) {
-      console.log(err);
+        alert('Invalid email or password')
     }
   }
-
-
-  /// START TEST
-
-
-  // const signUserIn = (e) => {
-  //   e.preventDefault();
-  //   setPersistence(auth, browserSessionPersistence)
-  //   .then(async () => {
-  //     const user = await signInWithEmailAndPassword(auth, input.email, input.password);
-  //     setUserId(user.user.uid);
-  //     await setPersistence(auth, browserSessionPersistence);
-  //     await refreshCards(user.user.uid);
-  //     navigate('/');
-  //     setInput({
-  //       email: '',
-  //       password: ''
-  //     });
-  //   })
-  // }
-
-
-  /// END TEST
-
 
   
   const postTrip = async (date, description, location, image) => {
