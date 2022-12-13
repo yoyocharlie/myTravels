@@ -11,7 +11,7 @@ import { getFirestore, collection, getDocs, addDoc, deleteDoc,updateDoc, doc } f
 
 function App() {
   const firebaseConfig = {
-    apiKey: "AIzaSyCzKdFbCfH0Rhx_bEE79rZyga2sUWDyNGA",
+    apiKey: process.env.REACT_APP_APIKEY,
     authDomain: "mytravel-d9e6a.firebaseapp.com",
     projectId: "mytravel-d9e6a",
     appId: "1:1004896394275:web:9be378111fe2cd6bdf2596",
