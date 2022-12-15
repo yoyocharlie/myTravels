@@ -5,7 +5,7 @@ const Card = (props) => {
   const toggleUpdateModal = props.toggleUpdateModal;
 
   return (
-    <div className="mb-5 inline-block mr-20">  
+    <div className="mb-5">  
       <div className="max-w-sm rounded bg-white overflow-hidden shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-xl">
         <img className="w-full" src={props.image} alt="" />
         <div className="px-6 py-4">
