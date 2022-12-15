@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 export default function Login(props) {
 
   return (
-    <>
-      <div className="mt-28 flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="bg-[url('../images/valley.png')] bg-cover h-screen">
+      <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8 p-10 bg-white rounded-lg shadow-lg">
           <div>
             <h1 className="xs:text-4xl sm:text-5xl text-center text-pinkishRed p-1 font-rubik-glitch">myTravels</h1>
@@ -38,7 +38,7 @@ export default function Login(props) {
                   onChange={props.handleInput}
                 />
               </div>
-              <div>
+              <div className="h-20">
                 <label htmlFor="password" className="sr-only">
                   Password
                 </label>
@@ -54,6 +54,7 @@ export default function Login(props) {
                   value={props.input.password}
                   onChange={props.handleInput}
                 />
+                {props.loginError && <div className="text-red-600">*Incorrect email or password</div>}
               </div>
             </div>
 
@@ -74,6 +75,6 @@ export default function Login(props) {
           </form>
         </div>
       </div>
-    </>
+    </div>
   )
 }

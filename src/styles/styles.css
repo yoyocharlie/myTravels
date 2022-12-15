@@ -612,18 +612,6 @@ video {
   left: 50%;
 }
 
-.top-3 {
-  top: 0.75rem;
-}
-
-.right-2\.5 {
-  right: 0.625rem;
-}
-
-.right-2 {
-  right: 0.5rem;
-}
-
 .z-10 {
   z-index: 10;
 }
@@ -645,9 +633,19 @@ video {
   margin-right: 1rem;
 }
 
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
+}
+
+.mx-20 {
+  margin-left: 5rem;
+  margin-right: 5rem;
 }
 
 .mb-5 {
@@ -686,10 +684,6 @@ video {
   margin-top: 2.5rem;
 }
 
-.mt-28 {
-  margin-top: 7rem;
-}
-
 .mt-8 {
   margin-top: 2rem;
 }
@@ -700,6 +694,14 @@ video {
 
 .mb-4 {
   margin-bottom: 1rem;
+}
+
+.mt-28 {
+  margin-top: 7rem;
+}
+
+.mr-20 {
+  margin-right: 5rem;
 }
 
 .block {
@@ -740,6 +742,10 @@ video {
   height: fit-content;
 }
 
+.h-20 {
+  height: 5rem;
+}
+
 .h-full {
   height: 100%;
 }
@@ -748,12 +754,28 @@ video {
   height: 1.25rem;
 }
 
+.h-80 {
+  height: 20rem;
+}
+
 .max-h-20 {
   max-height: 5rem;
 }
 
+.max-h-8 {
+  max-height: 2rem;
+}
+
+.max-h-52 {
+  max-height: 13rem;
+}
+
 .min-h-full {
   min-height: 100%;
+}
+
+.min-h-screen {
+  min-height: 100vh;
 }
 
 .w-full {
@@ -782,8 +804,17 @@ video {
   width: 1.25rem;
 }
 
+.w-80 {
+  width: 20rem;
+}
+
 .min-w-full {
   min-width: 100%;
+}
+
+.min-w-max {
+  min-width: -webkit-max-content;
+  min-width: max-content;
 }
 
 .max-w-sm {
@@ -839,8 +870,37 @@ video {
           appearance: none;
 }
 
+.auto-cols-min {
+  grid-auto-columns: -webkit-min-content;
+  grid-auto-columns: min-content;
+}
+
+.auto-cols-auto {
+  grid-auto-columns: auto;
+}
+
+.grid-flow-dense {
+  grid-auto-flow: dense;
+}
+
+.grid-flow-col-dense {
+  grid-auto-flow: column dense;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
 .flex-col {
   flex-direction: column;
+}
+
+.content-start {
+  align-content: flex-start;
+}
+
+.items-start {
+  align-items: flex-start;
 }
 
 .items-center {
@@ -951,6 +1011,11 @@ video {
   border-color: transparent;
 }
 
+.border-black {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+}
+
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -983,6 +1048,19 @@ video {
 .bg-gray-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+}
+
+.bg-stone-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(214 211 209 / var(--tw-bg-opacity));
+}
+
+.bg-\[url\(\'\.\.\/images\/valley\.png\'\)\] {
+  background-image: url('../images/valley.png');
+}
+
+.bg-cover {
+  background-size: cover;
 }
 
 .p-5 {
@@ -1019,6 +1097,10 @@ video {
 
 .p-2 {
   padding: 0.5rem;
+}
+
+.p-28 {
+  padding: 7rem;
 }
 
 .px-6 {
@@ -1175,6 +1257,11 @@ video {
   color: rgb(75 85 99 / var(--tw-text-opacity));
 }
 
+.text-red-600 {
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity));
+}
+
 .text-gray-400 {
   --tw-text-opacity: 1;
   color: rgb(156 163 175 / var(--tw-text-opacity));
@@ -1292,10 +1379,6 @@ video {
 
 .ease-in {
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
-}
-
-body {
-  background-image: url('../images/valley.png');
 }
 
 .hover\:scale-105:hover {
@@ -1509,6 +1592,14 @@ body {
 }
 
 @media (min-width: 100px) {
+  .xs\:top-4 {
+    top: 1rem;
+  }
+
+  .xs\:right-5 {
+    right: 1.25rem;
+  }
+
   .xs\:min-w-full {
     min-width: 100%;
   }
@@ -1570,6 +1661,18 @@ body {
 }
 
 @media (min-width: 768px) {
+  .md\:top-3 {
+    top: 0.75rem;
+  }
+
+  .md\:right-2\.5 {
+    right: 0.625rem;
+  }
+
+  .md\:right-2 {
+    right: 0.5rem;
+  }
+
   .md\:mt-14 {
     margin-top: 3.5rem;
   }
@@ -1672,3 +1775,4 @@ body {
     line-height: 2.25rem;
   }
 }
+

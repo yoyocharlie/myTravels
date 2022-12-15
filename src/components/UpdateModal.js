@@ -5,12 +5,14 @@ const UpdateModal = (props) => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        // const image = e.target.elements.image.files[0];
-        const image = 'https://images.pexels.com/photos/2325446/pexels-photo-2325446.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
+        // let image = e.target.elements.image.files[0];
         const location = e.target.elements.location.value;
         const date = e.target.elements.date.value;
         const description = e.target.elements.description.value;
-        updateTrip(activeEditId, date, description, location, image);
+        // if (image === undefined) {
+        //     image = ''
+        // }
+        updateTrip(activeEditId, date, description, location);
         props.closeUpdateModal();
     }
 
@@ -21,18 +23,18 @@ const UpdateModal = (props) => {
             <div tabIndex="-1" aria-hidden="true" className="xs:min-w-full sm:min-w-max fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" data-modal-show="true">
                 <div className="relative w-full max-w-md h-full md:h-auto">
 
-                    <div className="relative p-4 bg-white rounded-lg shadow dark:bg-gray-700">
-                        <button onClick={props.closeUpdateModal} type="button" className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white">
+                    <div className="relative p-4 bg-white rounded-lg shadow dark:bg-gray-700 mx-2">
+                        <button onClick={props.closeUpdateModal} type="button" className="absolute xs:top-4 xs:right-5 md:top-3 md:right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white">
                             <svg aria-hidden="true" className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
                             <span className="sr-only">Close modal</span>
                         </button>
                         <div className="py-6 px-6 lg:px-8">
                             <h3 className="mb-4 text-center text-xl font-medium text-gray-900 dark:text-white">Update your trip</h3>
                             <form className="space-y-6" onSubmit={onSubmit}>
-                                <div>
+                                {/* <div>
                                     <label htmlFor="image" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image</label>
                                     <input src={activeEditInputs.image} accept="image/*" type="file" name="image" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" />
-                                </div>
+                                </div> */}
                                 <div>
                                     <label htmlFor="location" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Location</label>
                                     <div className="relative">

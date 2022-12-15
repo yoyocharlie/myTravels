@@ -6,8 +6,8 @@ export default function Signup(props) {
   const creatUserAccount = props.creatUserAccount;
 
   return (
-    <>
-      <div className="mt-28 flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="bg-[url('../images/valley.png')] bg-cover h-screen">
+      <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8 p-10 bg-white rounded-lg shadow-lg">
           <div>
             <h1 className="xs:text-4xl sm:text-5xl text-center text-pinkishRed p-1 font-rubik-glitch">myTravels</h1>
@@ -28,6 +28,7 @@ export default function Signup(props) {
                 <label htmlFor="email-address" className="sr-only">
                   Email address
                 </label>
+                {props.emailError && <div className="text-red-600">*Invalid Email</div>}
                 <input
                   id="email-address"
                   name="email"
@@ -41,22 +42,6 @@ export default function Signup(props) {
                 />
               </div>
               <div>
-                <label htmlFor="confirm-email" className="sr-only">
-                  Confirm Email Address
-                </label>
-                <input
-                  id="confirm-email"
-                  name="confirmEmail"
-                  type="email"
-                  autoComplete="email"
-                  required
-                  className="relative block w-full appearance-none rounded-none border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                  placeholder="Confirm Email"
-                  value={signupInput.confirmEmail}
-                  onChange={handleSignup}
-                />
-              </div>
-              <div>
                 <label htmlFor="password" className="sr-only">
                   Password
                 </label>
@@ -66,11 +51,28 @@ export default function Signup(props) {
                   type="password"
                   autoComplete="current-password"
                   required
-                  className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                  className="relative block w-full appearance-none rounded-none border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                   placeholder="Password"
                   value={signupInput.password}
                   onChange={handleSignup}
                 />
+              </div>
+              <div className="h-20">
+                <label htmlFor="confirm-password" className="sr-only">
+                  Confirm Password
+                </label>
+                <input
+                  id="confirm-password"
+                  name="confirmPassword"
+                  type="password"
+                  autoComplete="current-password"
+                  required
+                  className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                  placeholder="Confirm Password"
+                  value={signupInput.confirmEmail}
+                  onChange={handleSignup}
+                />
+                {props.passwordError && <div className="text-red-600">*Passwords do not match</div>}
               </div>
             </div>
 
@@ -91,6 +93,6 @@ export default function Signup(props) {
           </form>
         </div>
       </div>
-    </>
+    </div>
   )
 }

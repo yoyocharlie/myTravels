@@ -5,6 +5,7 @@ const Navbar = (props) => {
   const setUserId = props.setUserId;
   const signOut = props.signOut;
   const auth = props.auth;
+  const resetErrorState = props.resetErrorState;
 
   const logUserOut = async() => {
       await signOut(auth);

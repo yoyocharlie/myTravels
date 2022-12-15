@@ -8,6 +8,9 @@ import Profile from './components/Profile';
 import { initializeApp } from "firebase/app";
 import { getAuth, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, collection, getDocs, addDoc, deleteDoc,updateDoc, doc } from "firebase/firestore";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { v4 } from 'uuid';
+
 
 function App() {
   const firebaseConfig = {
@@ -15,13 +18,15 @@ function App() {
     authDomain: "mytravel-d9e6a.firebaseapp.com",
     projectId: "mytravel-d9e6a",
     appId: "1:1004896394275:web:9be378111fe2cd6bdf2596",
-    measurementId: "G-K61C1Y3KRF"
+    measurementId: "G-K61C1Y3KRF",
+    storageBucket: "mytravel-d9e6a.appspot.com",
   };
-
+  
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
   const db = getFirestore(app);
+  const storage = getStorage(app);
   
   const [userStatus, setUserStatus] = useState(false);
   const [userCards, setUserCards]   = useState([]);
@@ -32,11 +37,14 @@ function App() {
   const [userId, setUserId] = useState("");
   const [signupInput, setSignupInput] = useState({
     email: '',
-    confirmEmail: '',
-    password: ''
+    password: '',
+    confirmPassword: ''
   });
-  const navigate = useNavigate();
+  const [passwordError, setPasswordError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [loginError, setLoginError] = useState(false);
 
+  const navigate = useNavigate();
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
@@ -65,21 +73,23 @@ function App() {
   const creatUserAccount = async(e) => {
     e.preventDefault();
     try{
-      if(signupInput.email !== signupInput.confirmEmail) {
-        alert('Emails did not match')
+      if(signupInput.password !== signupInput.confirmPassword) {
+        setPasswordError(err => !err)
         return;
       }
       const cred = await createUserWithEmailAndPassword(auth, signupInput.email, signupInput.password);
       setSignupInput({
         email: '',
-        confirmEmail: '',
-        password: ''
+        password: '',
+        confirmPassword: ''
       });
       setUserId(cred.user.uid);
+      setPasswordError(false);
+      setEmailError(false);
       await refreshCards(cred.user.uid);
       navigate('/');
     } catch(err) {
-      alert('Invalid email')
+      setEmailError(err => !err)
     }
   }
 
@@ -90,23 +100,31 @@ function App() {
       setUserId(user.user.uid);
       await refreshCards(user.user.uid);
       navigate('/');
+      setLoginError(false);
       setInput({
         email: '',
         password: ''
       });
     } catch(err) {
-        alert('Invalid email or password')
+        setLoginError(err => !err);
     }
   }
 
-  
   const postTrip = async (date, description, location, image) => {
-    await addDoc(collection(db, "Users", userId, "Trips"), { date, description, location, image });
-    refreshCards(userId);
+    if (image !== undefined) {
+      const userStorage = ref(storage, `images${userId}/${v4()}`);
+      const upload = await uploadBytes(userStorage, image);
+      const url = await getDownloadURL(upload.ref);
+      await addDoc(collection(db, "Users", userId, "Trips"), { date, description, location, url });
+      refreshCards(userId);
+    } else {
+      await addDoc(collection(db, "Users", userId, "Trips"), { date, description, location });
+      refreshCards(userId);
+    }
   }
 
-  const updateTrip = async (id, date, description, location, image) => {
-    await updateDoc(doc(db, "Users", userId, "Trips", id), {date, description, location, image});
+  const updateTrip = async (id, date, description, location) => {
+    await updateDoc(doc(db, "Users", userId, "Trips", id), {date, description, location});
     refreshCards(userId);
   }
 
@@ -131,8 +149,8 @@ function App() {
       <Navbar auth={auth} setUserId={setUserId} signOut={signOut} userStatus={userStatus} />
       <Routes>
         <Route path='/' element={userStatus ? <Profile userCards={userCards} postTrip={postTrip} updateTrip={updateTrip} deleteTrip={deleteTrip}/> : <Home />} />
-        <Route  path='/login' element={<Login auth={auth} handleInput={handleInput} input={input} signUserIn={signUserIn} />} />
-        <Route  path='/signup' element={<Signup auth={auth} signupInput={signupInput} handleSignup={handleSignup} creatUserAccount={creatUserAccount} />} />
+        <Route  path='/login' element={<Login auth={auth} handleInput={handleInput} input={input} signUserIn={signUserIn} loginError={loginError} />} />
+        <Route  path='/signup' element={<Signup auth={auth} signupInput={signupInput} handleSignup={handleSignup} creatUserAccount={creatUserAccount} passwordError={passwordError} emailError={emailError} />} />
       </Routes>
     </div>
   );

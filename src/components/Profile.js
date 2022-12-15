@@ -16,11 +16,10 @@ const Profile = (props) => {
   const toggleModal = () => {
     setShowModal((modal) => !modal);
   }
-  const toggleUpdateModal = (id, image, date, description, location) => {
+  const toggleUpdateModal = (id, date, description, location) => {
     return () => {
       setActiveEditInputs({
         ...activeEditInputs,
-        image: image,
         date: date,
         description: description,
         location: location
@@ -38,14 +37,13 @@ const Profile = (props) => {
       <Card
         key={card.id}
         id={card.id}
-        image={card.image}
+        image={card.url}
         date={card.date}
         description={card.description}
         location={card.location}
         deleteTrip={deleteTrip}
         toggleUpdateModal={toggleUpdateModal(
-          card.id, 
-          card.image, 
+          card.id,  
           card.date, 
           card.description, 
           card.location
@@ -57,13 +55,15 @@ const Profile = (props) => {
   
 
   return (
-    <div className="flex justify-center m-4">
-        <div className="grid md:grid-cols-3 gap-4 md:gap-8 justify-items-center mt-28">
-            {cardComponents}
-            <EmptyCard openModal={toggleModal}/>
-        </div>
-        {showModal && <Modal toggleModal={toggleModal} postTrip={postTrip} />}
-        {updateModal && <UpdateModal closeUpdateModal={closeUpdateModal} toggleUpdateModal={toggleUpdateModal} updateTrip={updateTrip} activeEditId={activeEditId} activeEditInputs={activeEditInputs} />}
+    <div className="bg-stone-300 min-h-screen">
+      <div className="flex justify-center m-4">
+          <div className="grid md:grid-cols-3 gap-4 md:gap-8 justify-items-center mt-28">
+              {cardComponents}
+              <EmptyCard openModal={toggleModal}/>
+          </div>
+          {showModal && <Modal toggleModal={toggleModal} postTrip={postTrip} />}
+          {updateModal && <UpdateModal closeUpdateModal={closeUpdateModal} toggleUpdateModal={toggleUpdateModal} updateTrip={updateTrip} activeEditId={activeEditId} activeEditInputs={activeEditInputs} />}
+      </div>
     </div>
   )
 }

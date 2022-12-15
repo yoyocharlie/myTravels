@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 const Home = () => {
   return (
     <div>
-        <div className="h-screen flex justify-center font-roboto">
+        <div className="h-screen flex justify-center font-roboto bg-[url('../images/valley.png')] bg-cover">
             <div className="flex items-center text-center">
-                <div className="rounded bg-white shadow-2xl p-10">
+                <div className="rounded bg-white shadow-2xl p-10 mx-4">
                     <div className="rounded xs:p-2 sm:p-10">
                         <h1 className="xs:text-2xl sm:text-3xl md:text-5xl md:leading-loose leading-loose text-pinkishRed">Don't call it a dream.</h1>
                         <h1 className="xs:text-2xl sm:text-3xl font-bold md:text-5xl md:leading-loose leading-loose text-pinkishRed">Call it a plan.</h1>
