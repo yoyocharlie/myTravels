@@ -28,7 +28,7 @@ export default function Signup(props) {
                 <label htmlFor="email-address" className="sr-only">
                   Email address
                 </label>
-                {props.emailError && <div className="text-red-600">*Invalid Email</div>}
+                {props.emailError && <div className="text-red-600">{props.emailError}</div>}
                 <input
                   id="email-address"
                   name="email"
@@ -72,8 +72,9 @@ export default function Signup(props) {
                   value={signupInput.confirmEmail}
                   onChange={handleSignup}
                 />
-                {props.passwordError && <div className="text-red-600">*Passwords do not match</div>}
+                {props.passwordError && <div className="text-red-600">{props.passwordError}</div>}
               </div>
+              <div className="text-gray-400 text-sm text-center">*Password should be at least 6 characters</div>
             </div>
 
             <div className="flex items-center justify-between">

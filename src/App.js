@@ -74,7 +74,7 @@ function App() {
     e.preventDefault();
     try{
       if(signupInput.password !== signupInput.confirmPassword) {
-        setPasswordError(err => !err)
+        setPasswordError('*Passwords do not match')
         return;
       }
       const cred = await createUserWithEmailAndPassword(auth, signupInput.email, signupInput.password);
@@ -89,7 +89,12 @@ function App() {
       await refreshCards(cred.user.uid);
       navigate('/');
     } catch(err) {
-      setEmailError(err => !err)
+      if (err.message === "Firebase: Error (auth/email-already-in-use).") {
+        setEmailError('*Email already in use')
+      }
+      if (err.message === "Firebase: Password should be at least 6 characters (auth/weak-password).") {
+        setPasswordError('*Password too short')
+      }
     }
   }
 
